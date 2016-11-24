@@ -12,6 +12,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { IndexRoute, Router, Route, hashHistory } from 'react-router';
 
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin(); //Soft dependancy for Material-UI
+
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import App from './App';

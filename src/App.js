@@ -20,9 +20,6 @@ firebase.initializeApp(FirebaseConfig);
 //    /////
 //    MATERIAL-UI COMPONENTS
 //    /////
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin(); //Soft dependancy for Material-UI
-
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import Paper from 'material-ui/Paper';
@@ -34,7 +31,7 @@ import {blueGrey100} from 'material-ui/styles/colors';
 //  Grid System:
 import {Container} from 'react-grid-system';
 //  Custom Components:
-//import NavElements from './NavElements';
+import Gateway from './Gateway';
 
 
 
@@ -72,15 +69,21 @@ var App = React.createClass ({
             lang: ''
         };
     },
-    navToggle:function() {
-        this.setState({nav: !this.state.nav});
+    
+    setLang:function(language) {
+        this.setState({
+            lang: language
+        });
     },
-
+    
     /*
     Material-UI Drawers are consistent w/ guidelines, but do not operate like
     traditional side-navs. I've overriden basic styles and added listeners
     for mobile view to adapt this component.
     */
+    navToggle:function() {
+        this.setState({nav: !this.state.nav});
+    },
     componentDidMount:function() {
         window.addEventListener('resize', this.resize);
     },
@@ -93,6 +96,8 @@ var App = React.createClass ({
     },
     
     render:function() {
+        //  FOR DEVELOPMENT:
+        console.log(this.state);
         return (
             <div>
                 <AppBar
@@ -101,35 +106,37 @@ var App = React.createClass ({
                     style={styles.appBar}
                     zDepth={2}
                     />
-                <Drawer
-                    open={this.state.nav}
-                    docked={true}
-                    containerStyle={styles.drawer}
-                    zDepth={1}
-                    >
-
-                    <Paper zDepth={5} style={styles.footer}>
-                        <b>© Ryan Keller 2016</b>
-                    </Paper>
-                </Drawer>
-
-                <Paper
-                    style={{
-                        backgroundColor: blueGrey100,
-                        paddingLeft: this.state.nav ? styles.drawer.width : '0px'
-                    }}>
-
-                    <Container style={styles.container}>
-                        {this.state.lang &&
-                            <div>{this.props.children}LANGUAGE</div>
-                        }
-                        {!this.state.lang &&
-                            <div>NO LANGUAGE</div>
-                        }
+                {!this.state.lang ?
+                    <Container>
+                        <Gateway setLang={this.setLang}/>
                     </Container>
-                    <br></br>
-                </Paper>
+                    :
+                    <div>
+                        <Drawer
+                            open={this.state.nav}
+                            docked={true}
+                            containerStyle={styles.drawer}
+                            zDepth={1}
+                            >
 
+                            <Paper zDepth={5} style={styles.footer}>
+                                <b>© Ryan Keller 2016</b>
+                            </Paper>
+                        </Drawer>
+
+                        <Paper
+                            style={{
+                                backgroundColor: blueGrey100,
+                                paddingLeft: this.state.nav ? styles.drawer.width : '0px'
+                            }}>
+
+                            <Container style={styles.container}>
+                                {this.props.children}LANGUAGE
+                            </Container>
+                            <br></br>
+                        </Paper>
+                    </div>
+                }
             </div>
         );
     }
