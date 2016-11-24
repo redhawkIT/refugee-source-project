@@ -22,7 +22,7 @@ import ReactFireMixin from 'reactfire';
 import {List, ListItem} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 
-import {indigo900, blueA400} from 'material-ui/styles/colors';
+import {blueA400} from 'material-ui/styles/colors';
 
 //All the icons used in the nav (6)... yes, separate paths. :(
 import Face from 'material-ui/svg-icons/action/face';

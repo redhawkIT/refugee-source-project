@@ -36,7 +36,7 @@ var Gateway = React.createClass ({
     render:function() {
         return (
             <Card style={styles.card}>
-                <CardTitle title="Language:" />
+                <CardTitle title="Language" />
                 <CardActions>
                     <RaisedButton secondary={true} label="English"
                         onTouchTap={() => this.props.setLang('en')} />
