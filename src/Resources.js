@@ -34,10 +34,6 @@ var Resources = React.createClass ({
                 <CardTitle title="Placeholder" subtitle="Resources"/>
                 <CardText>
                     Language: {this.props.lang}
-                    <br></br>
-                    Mobile: {this.props.mobile}
-                    <br></br>
-                    Nav: {this.props.nav}
                 </CardText>
             </Card>
         );

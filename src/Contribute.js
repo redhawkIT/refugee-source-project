@@ -34,10 +34,6 @@ var Contribute = React.createClass ({
                 <CardTitle title="Placeholder" subtitle="Contribute"/>
                 <CardText>
                     Language: {this.props.lang}
-                    <br></br>
-                    Mobile: {this.props.mobile}
-                    <br></br>
-                    Nav: {this.props.nav}
                 </CardText>
             </Card>
         );

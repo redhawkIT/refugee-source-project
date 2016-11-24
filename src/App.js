@@ -103,6 +103,8 @@ var App = React.createClass ({
         In order to pass lang, mobile and nav, we render children
         as clones with additional props. This allows us to pass data down routes.
         */
+        console.log("APP PROPS:", this.props);
+        console.log("APP STATE:", this.state);
         return (
             <div>
                 <AppBar
@@ -138,12 +140,9 @@ var App = React.createClass ({
                             }}>
 
                             <Container style={styles.container}>
-                                {React.cloneElement(this.props.children, {
-                                        lang: this.state.lang,
-                                        mobile: this.state.mobile,
-                                        nav: this.state.nav
-                                    }
-                               )}
+                                {React.cloneElement(
+                                    this.props.children, { lang: this.state.lang }
+                                )}
                             </Container>
                             <br></br>
                         </Paper>
