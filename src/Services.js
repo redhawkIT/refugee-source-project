@@ -33,9 +33,11 @@ var Services = React.createClass ({
             <Card style={styles.card}>
                 <CardTitle title="Placeholder" subtitle="Services"/>
                 <CardText>
-                    Placeholder Section:
-                    <br></br>
                     Language: {this.props.lang}
+                    <br></br>
+                    Mobile: {this.props.mobile}
+                    <br></br>
+                    Nav: {this.props.nav}
                 </CardText>
             </Card>
         );

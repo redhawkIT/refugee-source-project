@@ -29,13 +29,17 @@ const styles = {
 };
 var Home = React.createClass ({
     render:function() {
+        console.log("HOME PROPS:", this.props);
+        console.log("HOME STATE:", this.state);
         return (
             <Card style={styles.card}>
                 <CardTitle title="Placeholder" subtitle="Home"/>
                 <CardText>
-                    Placeholder Section:
-                    <br></br>
                     Language: {this.props.lang}
+                    <br></br>
+                    Mobile: {this.props.mobile}
+                    <br></br>
+                    Nav: {this.props.nav}
                 </CardText>
             </Card>
         );
