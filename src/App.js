@@ -1,9 +1,22 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+/* jshint esnext:true */
+/*
+globals
+React:false, ReactDOM: false,
+$:false,
+firebase:false, firebaseui:false,
+Materialize:false,
+document:false, window:false, console:false, alert:false, user:false
+*/
 
-class App extends Component {
-  render() {
+import React from 'react';
+import logo from './logo.svg';
+
+import FirebaseConfig from './FirebaseConfig';
+firebase.initializeApp(FirebaseConfig);
+
+
+var App = React.createClass ({
+  render:function() {
     return (
       <div className="App">
         <div className="App-header">
@@ -16,6 +29,6 @@ class App extends Component {
       </div>
     );
   }
-}
+});
 
 export default App;
