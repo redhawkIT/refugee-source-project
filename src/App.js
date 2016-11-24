@@ -26,7 +26,7 @@ injectTapEventPlugin(); //Soft dependancy for Material-UI
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import Paper from 'material-ui/Paper';
-import {blueGrey900, blueGrey200, indigo900, indigo700} from 'material-ui/styles/colors';
+import {blueGrey100} from 'material-ui/styles/colors';
 
 //    /////
 //    MISC COMPONENTS
@@ -34,28 +34,32 @@ import {blueGrey900, blueGrey200, indigo900, indigo700} from 'material-ui/styles
 //  Grid System:
 import {Container} from 'react-grid-system';
 //  Custom Components:
-
 //import NavElements from './NavElements';
+
+
 
 //    /////
 //    COMPONENT
 //    /////
 const styles = {
+    //The following appBar styles could not be applied by MUItheme.
+    appBar: {
+        height: 65,
+        position: 'fixed',  //Appbar never disappears
+        top: 0
+    },
     drawer: {
         width: 200,
         marginTop: 65
+    },
+    container: {
+        paddingTop: 100
     },
     footer: {
         textAlign: "center",
         width: "100%",
         position: "fixed",
         bottom: 65
-    },
-    //The following styles could not be applied by MUItheme.
-    appBar: {
-        height: 65,
-        position: 'fixed',  //Appbar never disappears
-        top: 0
     }
 };
 
@@ -64,8 +68,12 @@ var App = React.createClass ({
         var mobileView = (window.innerWidth < 768);
         return {
             mobile: mobileView,
-            navOpen: !mobileView
+            nav: !mobileView,
+            lang: ''
         };
+    },
+    navToggle:function() {
+        this.setState({nav: !this.state.nav});
     },
 
     /*
@@ -73,30 +81,28 @@ var App = React.createClass ({
     traditional side-navs. I've overriden basic styles and added listeners
     for mobile view to adapt this component.
     */
-    handleResize:function() {
+    componentDidMount:function() {
+        window.addEventListener('resize', this.resize);
+    },
+    resize:function() {
         var mobileView = (window.innerWidth < 768);
         this.setState({
             mobile: mobileView,
-            navOpen: !mobileView,
+            nav: !mobileView,
         });
     },
-    componentDidMount:function() {
-        window.addEventListener('resize', this.handleResize);
-    },
-    navToggleTap:function() {
-        this.setState({navOpen: !this.state.navOpen});
-    },
+    
     render:function() {
         return (
             <div>
                 <AppBar
                     title={"Emerald Refuge"}
-                    onTouchTap={this.navToggleTap}
+                    onTouchTap={this.navToggle}
                     style={styles.appBar}
                     zDepth={2}
                     />
                 <Drawer
-                    open={this.state.navOpen}
+                    open={this.state.nav}
                     docked={true}
                     containerStyle={styles.drawer}
                     zDepth={1}
@@ -109,13 +115,17 @@ var App = React.createClass ({
 
                 <Paper
                     style={{
-                        backgroundColor: blueGrey200,
-                            paddingLeft: this.state.navOpen ? styles.drawer.width : '0px'
+                        backgroundColor: blueGrey100,
+                        paddingLeft: this.state.nav ? styles.drawer.width : '0px'
                     }}>
 
-                    <Container style={{marginTop: styles.appBar.height}}>
-                        <br></br>
-                        {this.props.children}
+                    <Container style={styles.container}>
+                        {this.state.lang &&
+                            <div>{this.props.children}LANGUAGE</div>
+                        }
+                        {!this.state.lang &&
+                            <div>NO LANGUAGE</div>
+                        }
                     </Container>
                     <br></br>
                 </Paper>
