@@ -32,6 +32,7 @@ import {blueGrey100} from 'material-ui/styles/colors';
 import {Container} from 'react-grid-system';
 //  Custom Components:
 import Gateway from './Gateway';
+import Nav from './Nav';
 
 
 
@@ -42,7 +43,7 @@ const styles = {
     //The following appBar styles could not be applied by MUItheme.
     appBar: {
         height: 65,
-        position: 'fixed',  //Appbar never disappears
+        position: 'fixed',
         top: 0
     },
     drawer: {
@@ -118,7 +119,9 @@ var App = React.createClass ({
                             containerStyle={styles.drawer}
                             zDepth={1}
                             >
-
+                            
+                            <Nav />
+                            
                             <Paper zDepth={5} style={styles.footer}>
                                 <b>© Ryan Keller 2016</b>
                             </Paper>
@@ -131,7 +134,7 @@ var App = React.createClass ({
                             }}>
 
                             <Container style={styles.container}>
-                                {this.props.children}LANGUAGE
+                                {this.props.children}
                             </Container>
                             <br></br>
                         </Paper>
