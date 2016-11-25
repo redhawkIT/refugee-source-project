@@ -20,6 +20,12 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 import RaisedButton from 'material-ui/RaisedButton';
 
 //    /////
+//    MISC COMPONENTS
+//    /////
+//  Custom Components:
+import LanguageSelection from './LanguageSelection';
+
+//    /////
 //    COMPONENT
 //    /////
 const styles = {
@@ -38,19 +44,7 @@ var Gateway = React.createClass ({
             <Card style={styles.card}>
                 <CardTitle title="Language" />
                 <CardActions>
-                    <RaisedButton secondary={true} label="English"
-                        onTouchTap={() => this.props.setLang('en')} />
-                    <RaisedButton secondary={true} label="عَرَبِيّ"
-                        onTouchTap={() => this.props.setLang('ar')} />
-                    <RaisedButton secondary={true} label="Language-C"
-                        onTouchTap={() => this.props.setLang('cc')} />
-                    <RaisedButton secondary={true} label="Language-D"
-                        onTouchTap={() => this.props.setLang('dd')} />
-                    <RaisedButton secondary={true} id='fr' label="français"
-                        onTouchTap={() => this.props.setLang('fr')} />
-                    <RaisedButton secondary={true} id='sp' label="español"
-                        onTouchTap={() => this.props.setLang('sp')} />
-                    
+                    <LanguageSelection setLang={this.props.setLang} />
                 </CardActions>
             </Card>
         );

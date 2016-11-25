@@ -24,6 +24,8 @@ import Paper from 'material-ui/Paper';
 //    /////
 //  Grid System:
 import {Container} from 'react-grid-system';
+//  Custom Components:
+import LanguageSelection from './LanguageSelection';
 
 
 
@@ -32,8 +34,7 @@ import {Container} from 'react-grid-system';
 //    /////
 const styles = {
     languageContainer: {
-        textAlign: 'right',
-        overflowX: 'auto'
+        textAlign: 'right'
     }
 };
 
@@ -42,18 +43,7 @@ var Footer = React.createClass ({
         return (
             <Paper>
                 <div style={styles.languageContainer}>
-                    <FlatButton label="English"
-                        onTouchTap={() => this.props.setLang('en')} />
-                    <FlatButton label="عَرَبِيّ"
-                        onTouchTap={() => this.props.setLang('ar')} />
-                    <FlatButton label="Language-C"
-                        onTouchTap={() => this.props.setLang('cc')} />
-                    <FlatButton label="Language-D"
-                        onTouchTap={() => this.props.setLang('dd')} />
-                    <FlatButton id='fr' label="français"
-                        onTouchTap={() => this.props.setLang('fr')} />
-                    <FlatButton id='sp' label="español"
-                        onTouchTap={() => this.props.setLang('sp')} />
+                    <LanguageSelection setLang={this.props.setLang} />
                 </div>
             </Paper>
         );
