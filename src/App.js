@@ -31,7 +31,6 @@ import {Container} from 'react-grid-system';
 //  Custom Components:
 import Gateway from './Gateway';
 import Nav from './Nav';
-import Footer from './Footer';
 
 
 
@@ -124,7 +123,12 @@ var App = React.createClass ({
                             containerStyle={styles.drawer}
                             zDepth={1}
                             >
+                            
                             <Nav />
+                            
+                            <Paper zDepth={5} style={styles.footer}>
+                                <b>© Ryan Keller 2016</b>
+                            </Paper>
                         </Drawer>
 
                         <Container style={{
@@ -134,9 +138,7 @@ var App = React.createClass ({
                             {React.cloneElement(
                                 this.props.children, { lang: this.state.lang }
                             )}
-                            <Footer setLang={this.setLang}/>
                         </Container>
-                        
                     </div>
                 }
             </div>
