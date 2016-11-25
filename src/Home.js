@@ -23,7 +23,6 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 //    /////
 const styles = {
     card: {
-        marginTop: 100,
         textAlign: 'center'
     }
 };

@@ -12,7 +12,6 @@ document:false, window:false, console:false, alert:false, user:false
 //    IMPORT DEPENDENCIES
 //    /////
 import React from 'react';
-//  Firebase - BaaS
 import firebase from 'firebase';
 import FirebaseConfig from './FirebaseConfig';
 firebase.initializeApp(FirebaseConfig);
@@ -23,7 +22,6 @@ firebase.initializeApp(FirebaseConfig);
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import Paper from 'material-ui/Paper';
-import {blueGrey100} from 'material-ui/styles/colors';
 
 //    /////
 //    MISC COMPONENTS
@@ -33,6 +31,7 @@ import {Container} from 'react-grid-system';
 //  Custom Components:
 import Gateway from './Gateway';
 import Nav from './Nav';
+import Footer from './Footer';
 
 
 
@@ -125,27 +124,19 @@ var App = React.createClass ({
                             containerStyle={styles.drawer}
                             zDepth={1}
                             >
-                            
                             <Nav />
-                            
-                            <Paper zDepth={5} style={styles.footer}>
-                                <b>© Ryan Keller 2016</b>
-                            </Paper>
                         </Drawer>
 
-                        <Paper
-                            style={{
-                                backgroundColor: blueGrey100,
-                                paddingLeft: this.state.nav ? styles.drawer.width : '0px'
-                            }}>
-
-                            <Container style={styles.container}>
-                                {React.cloneElement(
-                                    this.props.children, { lang: this.state.lang }
-                                )}
-                            </Container>
-                            <br></br>
-                        </Paper>
+                        <Container style={{
+                            paddingTop: 100,
+                            paddingLeft: this.state.nav ? styles.drawer.width : 0
+                        }}>
+                            {React.cloneElement(
+                                this.props.children, { lang: this.state.lang }
+                            )}
+                            <Footer setLang={this.setLang}/>
+                        </Container>
+                        
                     </div>
                 }
             </div>
