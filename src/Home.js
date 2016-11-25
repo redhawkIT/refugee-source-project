@@ -18,6 +18,7 @@ import React from 'react';
 //    /////
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
+
 //    /////
 //    COMPONENT
 //    /////
@@ -27,7 +28,32 @@ const styles = {
     }
 };
 var Home = React.createClass ({
+    getInitialState:function() {
+        return({
+            stateside: false,
+            citizen: false,
+            nationality: [''],  //Multiple nationalities.
+            gender: '',
+            service: {          //Seeking these services:
+                food: true,
+                shelter: true,
+                housing: true,
+                immigration: true,
+                resettlement: true,
+                esl: true,
+                employment: true,
+                childcare: true,
+                healthcare: true,
+                mental: true,
+                addiction: true,
+            },
+            lowIncome: true
+        });
+    },
+    
+    
     render:function() {
+        console.log('REFUGEE INFO:', this.state);
         return (
             <Card style={styles.card}>
                 <CardTitle title="Placeholder" subtitle="Home"/>
@@ -35,6 +61,7 @@ var Home = React.createClass ({
                     Language: {this.props.lang}
                 </CardText>
             </Card>
+            
         );
     }
 });

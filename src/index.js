@@ -21,11 +21,9 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import {fade} from 'material-ui/utils/colorManipulator';
 import spacing from 'material-ui/styles/spacing';
 import {
-    green500, green700, blue500,
-    indigo700, indigo500,
-    grey100, grey300, grey400, grey500, grey600,
+    green500, green700, grey400,
     blueA100, blueA200, blueA400,
-    pinkA200, pinkA400, pinkA100,
+    grey300,
     white, darkBlack, fullBlack, fullWhite
 } from 'material-ui/styles/colors';
 
@@ -48,10 +46,7 @@ const muiTheme = getMuiTheme({
         pickerHeaderColor: green500,
         clockCircleColor: (0, fade)(darkBlack, 0.07),
         shadowColor: fullBlack
-    },
-//    appBar: {
-//        color: indigo700
-//    }
+    }
 });
 
 import './index.css';
@@ -62,8 +57,6 @@ import Resources from './Resources';
 import Services from './Services';
 import About from './About';
 import Contribute from './Contribute';
-
-
 
 ReactDOM.render(
     <MuiThemeProvider muiTheme={muiTheme}>

@@ -133,7 +133,7 @@ var App = React.createClass ({
 
                         <Container style={{
                             paddingTop: 100,
-                            paddingLeft: this.state.nav ? styles.drawer.width : 0
+                            paddingLeft: this.state.nav ? styles.drawer.width : 20
                         }}>
                             {React.cloneElement(
                                 this.props.children, { lang: this.state.lang }
