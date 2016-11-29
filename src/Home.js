@@ -31,8 +31,8 @@ import Directory from './Directory';
 //    COMPONENT
 //    /////
 const styles = {
-    card: {
-        textAlign: 'center'
+    views: {
+        padding: 10
     }
 };
 var Home = React.createClass ({
@@ -74,7 +74,6 @@ var Home = React.createClass ({
                 <Tabs
                     onChange={this.handleSlide}
                     value={this.state.slideIndex}
-                    style={{width: '100%'}}
                 >
                     <Tab label="Map" value={0} />
                     <Tab label="Directory" value={1} />
@@ -82,15 +81,13 @@ var Home = React.createClass ({
                 <SwipeableViews
                     index={this.state.slideIndex}
                     onChangeIndex={this.handleSlide}
-                    style={{width: '100%'}}
+                    style={styles.views}
                 >
                     <Col sm={12}>
-                        <Paper zDepth={2} style={{height: '100%'}}>
-                            <ServiceMap parent={this.state} />
-                        </Paper>
+                        <ServiceMap parent={this.state} />
                     </Col>
                     <Col sm={12}>
-                            <Directory parent={this.state} />
+                        <Directory parent={this.state} />
                     </Col>
                 </SwipeableViews>   
                 </Col>
