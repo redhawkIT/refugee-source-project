@@ -13,6 +13,8 @@ document:false, window:false, console:false, alert:false, user:false
 //    /////
 import React from 'react';
 import firebase from 'firebase';
+import ReactFireMixin from 'reactfire';
+
 import FirebaseConfig from './FirebaseConfig';
 firebase.initializeApp(FirebaseConfig);
 
@@ -60,13 +62,27 @@ const styles = {
 };
 
 var App = React.createClass ({
+    mixins: [ReactFireMixin],
     getInitialState:function() {
         var mobileView = (window.innerWidth < 768);
         return {
             mobile: mobileView,
             nav: !mobileView,
-            lang: ''
+            lang: '',
+            content: {
+                header: 'Emerald Refuge',
+                home: 'Home',
+                about: 'About Us',
+                disclaimer: 'Loading...',
+                tabMap: 'Map',
+                tabDirectory: 'Directory'
+            }
         };
+    },
+    componentWillMount: function() {
+        var ref = firebase.database().ref('main/' + this.props.lang + "/app");
+        this.bindAsObject(ref, 'content');
+        console.log("BOUND:", this.state.content);
     },
     
     setLang:function(language) {
@@ -103,6 +119,7 @@ var App = React.createClass ({
         */
         console.log("APP PROPS:", this.props);
         console.log("APP STATE:", this.state);
+        console.log("CONTENT:", this.state.content);
         return (
             <div>
                 <AppBar
