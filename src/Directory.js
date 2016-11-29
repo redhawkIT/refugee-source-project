@@ -31,8 +31,9 @@ import FlatButton from 'material-ui/FlatButton';
 //    COMPONENT
 //    /////
 const styles = {
+    //Adding margin props to cards make their containers responsive to expanding.
     card: {
-        marginBottom: 10
+        margin: 10
     }
 };
 var Directory = React.createClass ({
@@ -50,7 +51,7 @@ var Directory = React.createClass ({
     render:function() {
         console.log("Directory state:", this.state.resources);
         return (
-                <Paper>
+                <div>
                         <p>
                             This is the Directory component. Language: {this.props.lang}. Check this sample entry:
                         </p>
@@ -92,7 +93,7 @@ var Directory = React.createClass ({
                         </CardText>
                     </Card>
 
-                </Paper>
+                </div>
         );
     }
 });

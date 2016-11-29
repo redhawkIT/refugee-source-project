@@ -87,10 +87,14 @@ var Home = React.createClass ({
                     style={styles.views}
                 >
                     <Col sm={12}>
-                        <ServiceMap filters={this.state.filters} lang={this.props.lang} />
+                        <Paper>
+                            <ServiceMap filters={this.state.filters} lang={this.props.lang} />
+                        </Paper>
                     </Col>
                     <Col sm={12}>
-                        <Directory filters={this.state.filters} lang={this.props.lang} />
+                        <Paper>
+                            <Directory filters={this.state.filters} lang={this.props.lang} />
+                        </Paper>
                     </Col>
                 </SwipeableViews>   
                 </Col>

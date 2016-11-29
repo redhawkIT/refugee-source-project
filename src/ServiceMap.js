@@ -26,29 +26,27 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 //    COMPONENT
 //    /////
 const styles = {
-    paper: {
-        marginTop: 10,
-        marginBottom: 10
-    },
     card: {
+        marginBottom: 10,
+        marginTop: 10,
         textAlign: 'center'
     }
 };
 var ServiceMap = React.createClass ({
     render:function() {
         return (
-            <Paper style={styles.paper}>
-            <Card style={styles.card}>
-                <CardTitle title="Home - Map"/>
-                <CardText>
-                    Language: {this.props.lang}
-                    <p>
-                        This is the ServiceMap component.
-                        It's not called "Map" due to a namespace conflict.
-                    </p>
-                </CardText>
-            </Card>
-            </Paper>
+            <div>
+                <Card style={styles.card}>
+                    <CardTitle title="Home - Map"/>
+                    <CardText>
+                        Language: {this.props.lang}
+                        <p>
+                            This is the ServiceMap component.
+                            It's not called "Map" due to a namespace conflict.
+                        </p>
+                    </CardText>
+                </Card>
+            </div>
         );
     }
 });
