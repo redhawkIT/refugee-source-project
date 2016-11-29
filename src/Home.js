@@ -23,6 +23,9 @@ import SwipeableViews from 'react-swipeable-views';
 import Paper from 'material-ui/Paper';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
+import ServiceMap from './ServiceMap';
+import Directory from './Directory';
+
 
 //    /////
 //    COMPONENT
@@ -79,20 +82,10 @@ var Home = React.createClass ({
                     onChangeIndex={this.handleSlide}
                     >
                     <Paper>
-                        <Card style={styles.card}>
-                            <CardTitle title="Home - Map"/>
-                            <CardText>
-                                Language: {this.props.lang}
-                            </CardText>
-                        </Card>
+                        <ServiceMap parent={this.state} />
                     </Paper>
                     <Paper>
-                        <Card style={styles.card}>
-                            <CardTitle title="Home - Directory"/>
-                            <CardText>
-                                Language: {this.props.lang}
-                            </CardText>
-                        </Card>
+                        <Directory parent={this.state} />
                     </Paper>
                 </SwipeableViews>   
             
