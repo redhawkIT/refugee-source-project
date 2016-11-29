@@ -61,20 +61,8 @@ var Nav = React.createClass ({
                     <ListItem primaryText="Home"
                         leftIcon={<Face color={styles.iconColor}/>}/>
                 </Link>
-                <Link to="/resources">
-                    <ListItem primaryText="Resources"
-                        leftIcon={<VerifiedUser color={styles.iconColor}/>} />
-                </Link>
-                <Link to="/services">
-                    <ListItem primaryText="Services"
-                        leftIcon={<VerifiedUser color={styles.iconColor}/>} />
-                </Link>
                 <Link to="/about">
                     <ListItem primaryText="About Us"
-                        leftIcon={<VerifiedUser color={styles.iconColor}/>} />
-                </Link>
-                <Link to="/contribute">
-                    <ListItem primaryText="How to Help"
                         leftIcon={<VerifiedUser color={styles.iconColor}/>} />
                 </Link>
             </List>
