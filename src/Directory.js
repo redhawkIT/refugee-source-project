@@ -14,6 +14,9 @@ document:false, window:false, console:false, alert:false, user:false
 import React from 'react';
 import {Row, Col} from 'react-grid-system';
 
+import firebase from 'firebase';
+import ReactFireMixin from 'reactfire';
+
 
 //    /////
 //    MATERIAL-UI COMPONENTS
@@ -30,7 +33,19 @@ const styles = {
     }
 };
 var Directory = React.createClass ({
+    mixins: [ReactFireMixin],
+    getInitialState:function() {
+        return {
+            resources: []
+        };
+    },
+    componentWillMount: function() {
+        var ref = firebase.database().ref('resources');
+        this.bindAsArray(ref, 'resources');
+    },
+    
     render:function() {
+        console.log("Directory state:", this.state.resources);
         return (
             <Card style={styles.card}>
                 <CardTitle title="Home - Directory"/>

@@ -20,7 +20,6 @@ import {Row, Col} from 'react-grid-system';
 //    /////
 import {Tabs, Tab} from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
-import Paper from 'material-ui/Paper';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
 import ServiceMap from './ServiceMap';
@@ -38,7 +37,7 @@ const styles = {
 var Home = React.createClass ({
     getInitialState:function() {
         return({
-            slideIndex: 0,
+            slideIndex: 0,      //Which tab you're on
             stateside: false,
             citizen: false,
             nationality: [''],  //Multiple nationalities.
@@ -73,20 +72,20 @@ var Home = React.createClass ({
                 <Tabs
                     onChange={this.handleSlide}
                     value={this.state.slideIndex}
-                    >
+                >
                     <Tab label="Map" value={0} />
                     <Tab label="Directory" value={1} />
                 </Tabs>
                 <SwipeableViews
                     index={this.state.slideIndex}
                     onChangeIndex={this.handleSlide}
-                    >
-                    <Paper>
+                >
+                    <div>
                         <ServiceMap parent={this.state} />
-                    </Paper>
-                    <Paper>
+                    </div>
+                    <div>
                         <Directory parent={this.state} />
-                    </Paper>
+                    </div>
                 </SwipeableViews>   
             
             </div>            
