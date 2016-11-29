@@ -39,24 +39,27 @@ var Home = React.createClass ({
     getInitialState:function() {
         return({
             slideIndex: 0,      //Which tab you're on
-            stateside: false,
-            citizen: false,
-            nationality: [''],  //Multiple nationalities.
-            gender: '',
-            service: {          //Seeking these services:
-                food: true,
-                shelter: true,
-                housing: true,
-                immigration: true,
-                resettlement: true,
-                esl: true,
-                employment: true,
-                childcare: true,
-                healthcare: true,
-                mental: true,
-                addiction: true,
-            },
-            lowIncome: true
+            filters: {
+                stateside: false,
+                citizen: false,
+                nationality: [''],  //Multiple nationalities.
+                gender: '',
+                lowIncome: true,
+                service: {          //Seeking these services:
+                    food: true,
+                    shelter: true,
+                    housing: true,
+                    immigration: true,
+                    resettlement: true,
+                    esl: true,
+                    employment: true,
+                    childcare: true,
+                    healthcare: true,
+                    mental: true,
+                    addiction: true,
+                }
+            }
+            
         });
     },
     
@@ -67,7 +70,7 @@ var Home = React.createClass ({
     },
     
     render:function() {
-        console.log('REFUGEE INFO:', this.state);
+        console.log('HOME (REFUGEE) INFO:', this.state.filters);
         return (    
             <Row>
                 <Col sm={12}>
@@ -84,10 +87,10 @@ var Home = React.createClass ({
                     style={styles.views}
                 >
                     <Col sm={12}>
-                        <ServiceMap filters={this.state} lang={this.props.lang} />
+                        <ServiceMap filters={this.state.filters} lang={this.props.lang} />
                     </Col>
                     <Col sm={12}>
-                        <Directory filters={this.state} lang={this.props.lang} />
+                        <Directory filters={this.state.filters} lang={this.props.lang} />
                     </Col>
                 </SwipeableViews>   
                 </Col>

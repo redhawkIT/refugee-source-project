@@ -62,7 +62,7 @@ var Directory = React.createClass ({
                             showExpandableButton={true}
                             />
                         <CardActions>
-                            <FlatButton label="Webpage" href="google.com"/>
+                            <FlatButton label="Webpage" href="https://www.google.com/"/>
                             <FlatButton label="Phone" href="tel:1111111111"/>
                         </CardActions>
                         <CardText expandable={true}>
@@ -81,7 +81,7 @@ var Directory = React.createClass ({
                             showExpandableButton={true}
                             />
                         <CardActions>
-                            <FlatButton label="Webpage" href="google.com"/>
+                            <FlatButton label="Webpage" href="https://www.google.com/"/>
                             <FlatButton label="Phone" href="tel:1111111111"/>
                         </CardActions>
                         <CardText expandable={true}>
