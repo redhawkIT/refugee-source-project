@@ -21,7 +21,10 @@ import ReactFireMixin from 'reactfire';
 //    /////
 //    MATERIAL-UI COMPONENTS
 //    /////
+import Paper from 'material-ui/Paper';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
+
 
 
 //    /////
@@ -47,15 +50,30 @@ var Directory = React.createClass ({
     render:function() {
         console.log("Directory state:", this.state.resources);
         return (
-            <Card style={styles.card}>
-                <CardTitle title="Home - Directory"/>
-                <CardText>
-                    Language: {this.props.lang}
-                    <p>
-                        This is the Directory component.
-                    </p>
-                </CardText>
-            </Card>
+                <Paper>
+                        <p>
+                            This is the Directory component. Language: {this.props.lang}. Check this sample entry:
+                        </p>
+                    <Card>
+                        <CardHeader
+                            title="Without Avatar"
+                            subtitle="Subtitle"
+                            actAsExpander={true}
+                            showExpandableButton={true}
+                            />
+                        <CardActions>
+                            <FlatButton label="Webpage" href="google.com"/>
+                            <FlatButton label="Phone" href="tel:1111111111"/>
+                        </CardActions>
+                        <CardText expandable={true}>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
+                            Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
+                            Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+                        </CardText>
+                    </Card>
+
+                </Paper>
         );
     }
 });

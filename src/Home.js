@@ -20,6 +20,7 @@ import {Row, Col} from 'react-grid-system';
 //    /////
 import {Tabs, Tab} from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
+import Paper from 'material-ui/Paper';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
 import ServiceMap from './ServiceMap';
@@ -68,10 +69,12 @@ var Home = React.createClass ({
     render:function() {
         console.log('REFUGEE INFO:', this.state);
         return (    
-            <div>
+            <Row>
+                <Col sm={12}>
                 <Tabs
                     onChange={this.handleSlide}
                     value={this.state.slideIndex}
+                    style={{width: '100%'}}
                 >
                     <Tab label="Map" value={0} />
                     <Tab label="Directory" value={1} />
@@ -79,16 +82,19 @@ var Home = React.createClass ({
                 <SwipeableViews
                     index={this.state.slideIndex}
                     onChangeIndex={this.handleSlide}
+                    style={{width: '100%'}}
                 >
-                    <div>
-                        <ServiceMap parent={this.state} />
-                    </div>
-                    <div>
-                        <Directory parent={this.state} />
-                    </div>
+                    <Col sm={12}>
+                        <Paper zDepth={2} style={{height: '100%'}}>
+                            <ServiceMap parent={this.state} />
+                        </Paper>
+                    </Col>
+                    <Col sm={12}>
+                            <Directory parent={this.state} />
+                    </Col>
                 </SwipeableViews>   
-            
-            </div>            
+                </Col>
+            </Row>            
         );
     }
 });

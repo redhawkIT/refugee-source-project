@@ -18,6 +18,7 @@ import {Row, Col} from 'react-grid-system';
 //    /////
 //    MATERIAL-UI COMPONENTS
 //    /////
+import Paper from 'material-ui/Paper';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
 
@@ -25,6 +26,10 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 //    COMPONENT
 //    /////
 const styles = {
+    paper: {
+        marginTop: 10,
+        marginBottom: 10
+    },
     card: {
         textAlign: 'center'
     }
@@ -32,6 +37,7 @@ const styles = {
 var ServiceMap = React.createClass ({
     render:function() {
         return (
+            <Paper style={styles.paper}>
             <Card style={styles.card}>
                 <CardTitle title="Home - Map"/>
                 <CardText>
@@ -42,6 +48,7 @@ var ServiceMap = React.createClass ({
                     </p>
                 </CardText>
             </Card>
+            </Paper>
         );
     }
 });
