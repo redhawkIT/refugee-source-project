@@ -56,8 +56,27 @@ var Directory = React.createClass ({
                         </p>
                     <Card style={styles.card}>
                         <CardHeader
-                            title="Without Avatar"
-                            subtitle="Subtitle"
+                            title="Some Service"
+                            subtitle="422 11th Ave NE, Seattle WA 98105"
+                            actAsExpander={true}
+                            showExpandableButton={true}
+                            />
+                        <CardActions>
+                            <FlatButton label="Webpage" href="google.com"/>
+                            <FlatButton label="Phone" href="tel:1111111111"/>
+                        </CardActions>
+                        <CardText expandable={true}>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
+                            Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
+                            Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+                        </CardText>
+                    </Card>
+                
+                    <Card style={styles.card}>
+                        <CardHeader
+                            title="Some Service"
+                            subtitle="422 11th Ave NE, Seattle WA 98105"
                             actAsExpander={true}
                             showExpandableButton={true}
                             />
