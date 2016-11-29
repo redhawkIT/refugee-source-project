@@ -17,6 +17,7 @@ import React from 'react';
 //    MATERIAL-UI COMPONENTS
 //    /////
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 
 //    /////
@@ -27,6 +28,7 @@ const styles = {
         marginTop: 100,
         textAlign: 'center'
     }
+    
 };
 var Gateway = React.createClass ({
     /*

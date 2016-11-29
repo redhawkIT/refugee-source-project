@@ -52,10 +52,10 @@ const styles = {
         paddingTop: 100
     },
     footer: {
-        textAlign: "center",
         width: "100%",
         position: "fixed",
-        bottom: 65
+        bottom: 65,
+        textAlign: "center"
     }
 };
 
@@ -127,7 +127,9 @@ var App = React.createClass ({
                             <Nav />
                             
                             <Paper zDepth={5} style={styles.footer}>
-                                <b>© Ryan Keller 2016</b>
+                                <em>
+                                    Disclaimer: This is a student project, not a fully secured website
+                                </em>
                             </Paper>
                         </Drawer>
 
@@ -139,6 +141,7 @@ var App = React.createClass ({
                                 this.props.children, { lang: this.state.lang }
                             )}
                         </Container>
+                        
                     </div>
                 }
             </div>

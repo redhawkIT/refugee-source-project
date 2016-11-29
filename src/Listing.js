@@ -41,14 +41,19 @@ var Listing = React.createClass ({
                     showExpandableButton={true}
                     />
                 <CardActions>
-                    <FlatButton secondary={true} label="Website"
-                        href={this.props.listing.link}/>
-                    <FlatButton secondary={true} label={"Phone: " + this.props.listing.phone}
-                        href={"tel:" + this.props.listing.phone}/>
+                    {this.props.listing.link &&
+                        <FlatButton secondary={true} label="Website"
+                            href={this.props.listing.link}/>
+                    }
+                    {this.props.listing.phone &&
+                        <FlatButton secondary={true} label={"Phone: " + this.props.listing.phone}
+                            href={"tel:" + this.props.listing.phone}/>
+                    }
                 </CardActions>
                 <CardText expandable={true}>
-                    <hr></hr>
-                    {this.props.listing.description}
+                    <em>
+                        {this.props.listing.description}
+                    </em>
                 </CardText>
             </Card>
         );
