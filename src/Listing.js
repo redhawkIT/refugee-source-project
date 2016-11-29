@@ -37,20 +37,17 @@ var Listing = React.createClass ({
         return (
             <Card style={styles.card}>
                 <CardHeader
-                    title="Some Service"
-                    subtitle="422 11th Ave NE, Seattle WA 98105"
+                    title={this.props.listing.name}
+                    subtitle={this.props.listing.address}
                     actAsExpander={true}
                     showExpandableButton={true}
                     />
                 <CardActions>
-                    <FlatButton label="Webpage" href="https://www.google.com/"/>
-                    <FlatButton label="Phone" href="tel:1111111111"/>
+                    <FlatButton label="Website" href={this.props.listing.link}/>
+                    <FlatButton label={"Phone: " + this.props.listing.phone} href={"tel:" + this.props.listing.phone}/>
                 </CardActions>
                 <CardText expandable={true}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-                    Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-                    Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+                    {this.props.listing.description}
                 </CardText>
             </Card>
         );
