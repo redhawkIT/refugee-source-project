@@ -20,7 +20,6 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 import FlatButton from 'material-ui/FlatButton';
 
 
-
 //    /////
 //    COMPONENT
 //    /////
@@ -33,7 +32,6 @@ const styles = {
 var Listing = React.createClass ({    
     
     render:function() {
-        console.log("PROPS FOR LISTING:", this.props);
         return (
             <Card style={styles.card}>
                 <CardHeader
@@ -43,10 +41,13 @@ var Listing = React.createClass ({
                     showExpandableButton={true}
                     />
                 <CardActions>
-                    <FlatButton label="Website" href={this.props.listing.link}/>
-                    <FlatButton label={"Phone: " + this.props.listing.phone} href={"tel:" + this.props.listing.phone}/>
+                    <FlatButton secondary={true} label="Website"
+                        href={this.props.listing.link}/>
+                    <FlatButton secondary={true} label={"Phone: " + this.props.listing.phone}
+                        href={"tel:" + this.props.listing.phone}/>
                 </CardActions>
                 <CardText expandable={true}>
+                    <hr></hr>
                     {this.props.listing.description}
                 </CardText>
             </Card>
