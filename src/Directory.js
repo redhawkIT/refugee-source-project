@@ -25,6 +25,7 @@ import Paper from 'material-ui/Paper';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 
+import Listing from './Listing';
 
 
 //    /////
@@ -44,54 +45,22 @@ var Directory = React.createClass ({
         };
     },
     componentWillMount: function() {
-        var ref = firebase.database().ref('resources');
+        var ref = firebase.database().ref('resources/' + this.props.lang);
         this.bindAsArray(ref, 'resources');
     },
     
     render:function() {
         console.log("Directory state:", this.state.resources);
+        var listings = this.state.resources;
         return (
                 <div>
                         <p>
                             This is the Directory component. Language: {this.props.lang}. Check this sample entry:
                         </p>
-                    <Card style={styles.card}>
-                        <CardHeader
-                            title="Some Service"
-                            subtitle="422 11th Ave NE, Seattle WA 98105"
-                            actAsExpander={true}
-                            showExpandableButton={true}
-                            />
-                        <CardActions>
-                            <FlatButton label="Webpage" href="https://www.google.com/"/>
-                            <FlatButton label="Phone" href="tel:1111111111"/>
-                        </CardActions>
-                        <CardText expandable={true}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-                            Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-                            Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
-                        </CardText>
-                    </Card>
                 
-                    <Card style={styles.card}>
-                        <CardHeader
-                            title="Some Service"
-                            subtitle="422 11th Ave NE, Seattle WA 98105"
-                            actAsExpander={true}
-                            showExpandableButton={true}
-                            />
-                        <CardActions>
-                            <FlatButton label="Webpage" href="https://www.google.com/"/>
-                            <FlatButton label="Phone" href="tel:1111111111"/>
-                        </CardActions>
-                        <CardText expandable={true}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-                            Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-                            Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
-                        </CardText>
-                    </Card>
+                    {listings.map((listing, i) =>
+                        <Listing key={i} listing={listing} />
+                    )}
 
                 </div>
         );
