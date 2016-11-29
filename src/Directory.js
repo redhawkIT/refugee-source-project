@@ -32,7 +32,7 @@ import FlatButton from 'material-ui/FlatButton';
 //    /////
 const styles = {
     card: {
-        textAlign: 'center'
+        marginBottom: 10
     }
 };
 var Directory = React.createClass ({
@@ -54,7 +54,7 @@ var Directory = React.createClass ({
                         <p>
                             This is the Directory component. Language: {this.props.lang}. Check this sample entry:
                         </p>
-                    <Card>
+                    <Card style={styles.card}>
                         <CardHeader
                             title="Without Avatar"
                             subtitle="Subtitle"
