@@ -30,6 +30,9 @@ const styles = {
         marginBottom: 10,
         marginTop: 10,
         direction: 'inherit'
+    },
+    header: {
+        textAlign: 'center'
     }
 };
 var ServiceMap = React.createClass ({
@@ -37,7 +40,7 @@ var ServiceMap = React.createClass ({
         return (
             <div>
                 <Card style={styles.card}>
-                    <CardTitle title={this.props.content.title}/>
+                    <CardTitle title={this.props.content.title} style={styles.header}/>
                     <CardText>
                         <p>
                             {this.props.content.description}
