@@ -42,11 +42,11 @@ var Listing = React.createClass ({
                     />
                 <CardActions>
                     {this.props.listing.link &&
-                        <FlatButton secondary={true} label="Website"
+                        <FlatButton secondary={true} label={this.props.websiteTitle}
                             href={this.props.listing.link}/>
                     }
                     {this.props.listing.phone &&
-                        <FlatButton secondary={true} label={"Phone: " + this.props.listing.phone}
+                        <FlatButton secondary={true} label={this.props.phoneTitle + this.props.listing.phone}
                             href={"tel:" + this.props.listing.phone}/>
                     }
                 </CardActions>
