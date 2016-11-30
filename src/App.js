@@ -74,6 +74,7 @@ var App = React.createClass ({
             mobile: mobileView,
             nav: !mobileView,
             lang: '',
+            isRTL: '',
             content: {
                 header: '...',
                 disclaimer: '...',
@@ -87,7 +88,8 @@ var App = React.createClass ({
         var ref = firebase.database().ref(path);
         this.bindAsObject(ref, 'content');
         this.setState({
-            lang: language
+            lang: language,
+            isRTL: (language == 'ar')
         });
     },
     
@@ -118,17 +120,11 @@ var App = React.createClass ({
         Think this is weird? It's actually from the React docs...
         */
         console.log (document.documentElement.dir);
-        var containerStyle = {};
-        if (this.state.lang == 'ar') {
-            containerStyle = {
-                paddingTop: 100,
-                paddingRight: this.state.nav ? styles.drawer.width : 20
-            };
+        var containerStyle = {paddingTop: 100};
+        if (this.state.isRTL) {
+            containerStyle.paddingRight = this.state.nav ? styles.drawer.width : 20;
         } else {
-            containerStyle = {
-                paddingTop: 100,
-                paddingLeft: this.state.nav ? styles.drawer.width : 20
-            };
+            containerStyle.paddingLeft = this.state.nav ? styles.drawer.width : 20;
         }
         return (
             <div>
@@ -149,7 +145,7 @@ var App = React.createClass ({
                         open={this.state.nav}
                         docked={true}
                         containerStyle={styles.drawer}
-                        openSecondary={this.state.lang == 'ar'}
+                        openSecondary={this.state.isRTL}
                         zDepth={1}
                         >
 
