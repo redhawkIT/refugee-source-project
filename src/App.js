@@ -71,22 +71,11 @@ var App = React.createClass ({
             lang: '',
             content: {
                 header: '...',
-                home: '...',
-                about: '...',
                 disclaimer: '...',
-                tabMap: '...',
-                tabDirectory: '...'
+                nav: {}
             }
         };
     },
-//    componentWillMount: function() {
-//        var path = "main/" + this.state.lang;
-//        var ref = firebase.database().ref(path);
-//        console.log("PATH:", path);
-//        console.log("REF:", ref);
-//        this.bindAsObject(ref, 'content');
-//        console.log("BOUND:", this.state.content);
-//    },
     
     setLang:function(language) {
         var path = 'main/' + language + '/app';
@@ -94,7 +83,6 @@ var App = React.createClass ({
         this.bindAsObject(ref, 'content');
         this.setState({
             lang: language
-//            firstLoad: false
         });
     },
     
@@ -119,14 +107,11 @@ var App = React.createClass ({
     
     render:function() {
         //  FOR DEVELOPMENT:
-        //console.log(this.state);
         /*
         In order to pass lang, mobile and nav, we render children
         as clones with additional props. This allows us to pass data down routes.
+        Think this is weird? It's actually from the React docs...
         */
-        console.log("APP PROPS:", this.props);
-        console.log("APP STATE:", this.state);
-        console.log("CONTENT:", this.state.content);
         return (
             <div>
                 {!this.state.lang ?
@@ -149,7 +134,9 @@ var App = React.createClass ({
                         zDepth={1}
                         >
 
-                        <Nav content={this.state.content}/>
+                        <Nav 
+                            lang={this.state.lang}
+                            content={this.state.content.nav}/>
 
                         <Paper zDepth={5} style={styles.footer}>
                             <em>
@@ -162,12 +149,14 @@ var App = React.createClass ({
                         paddingTop: 100,
                         paddingLeft: this.state.nav ? styles.drawer.width : 20
                     }}>
-                        {React.cloneElement(
+                        {
+                        React.cloneElement(
                             this.props.children, {
                                 lang: this.state.lang,
                                 content: this.state.content
-                            }
-                        )}
+                            })
+                        }
+                        
                     </Container>
 
                 </div>

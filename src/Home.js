@@ -14,6 +14,9 @@ document:false, window:false, console:false, alert:false, user:false
 import React from 'react';
 import {Row, Col} from 'react-grid-system';
 
+import firebase from 'firebase';
+import ReactFireMixin from 'reactfire';
+
 
 //    /////
 //    MATERIAL-UI COMPONENTS
@@ -36,31 +39,41 @@ const styles = {
     }
 };
 var Home = React.createClass ({
+    mixins: [ReactFireMixin],
     getInitialState:function() {
         return({
             slideIndex: 0,      //Which tab you're on
+            content: {
+                map: {},
+                directory: {}
+            },
             filters: {
                 stateside: false,
-                citizen: false,
-                nationality: [''],  //Multiple nationalities.
-                gender: '',
-                lowIncome: true,
-                service: {          //Seeking these services:
-                    food: true,
-                    shelter: true,
-                    housing: true,
-                    immigration: true,
-                    resettlement: true,
-                    esl: true,
-                    employment: true,
-                    childcare: true,
-                    healthcare: true,
-                    mental: true,
-                    addiction: true,
-                }
+//                citizen: false,
+//                nationality: [''],  //Multiple nationalities.
+//                gender: '',
+//                lowIncome: true,
+//                service: {          //Seeking these services:
+//                    food: true,
+//                    shelter: true,
+//                    housing: true,
+//                    immigration: true,
+//                    resettlement: true,
+//                    esl: true,
+//                    employment: true,
+//                    childcare: true,
+//                    healthcare: true,
+//                    mental: true,
+//                    addiction: true,
+//                }
             }
             
         });
+    },
+    componentWillMount: function() {
+        var path = "main/" + this.props.lang + "/home";
+        var ref = firebase.database().ref(path);
+        this.bindAsObject(ref, 'content');
     },
     
     handleSlide:function(value) {
@@ -70,8 +83,6 @@ var Home = React.createClass ({
     },
     
     render:function() {
-        console.log('HOME (REFUGEE) PROPS:', this.props);
-        console.log('HOME (REFUGEE) INFO:', this.state);
         return (    
             <Row>
                 <Col sm={12}>
@@ -79,8 +90,8 @@ var Home = React.createClass ({
                     onChange={this.handleSlide}
                     value={this.state.slideIndex}
                 >
-                    <Tab label={this.props.content.tabMap} value={0} />
-                    <Tab label={this.props.content.tabDirectory} value={1} />
+                    <Tab label={this.state.content.map.title} value={0} />
+                    <Tab label={this.state.content.directory.title} value={1} />
                 </Tabs>
                 <SwipeableViews
                     index={this.state.slideIndex}
