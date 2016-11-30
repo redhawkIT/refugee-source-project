@@ -46,6 +46,11 @@ const styles = {
         position: 'fixed',
         top: 0
     },
+    header: {
+        //For bi/RTL support
+        paddingRight: 10,
+        paddingLeft: 10
+    },
     drawer: {
         width: 200,
         marginTop: 65
@@ -121,7 +126,7 @@ var App = React.createClass ({
                 :
                 <div>
                     <AppBar
-                        title={this.state.content.header}
+                        title={<span style={styles.header}>{this.state.content.header}</span>}
                         onTouchTap={this.navToggle}
                         style={styles.appBar}
                         zDepth={2}
