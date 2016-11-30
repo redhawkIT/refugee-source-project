@@ -37,6 +37,9 @@ import Directory from './Directory';
 const styles = {
     views: {
         padding: 10
+    },
+    tabs: {
+        direction: 'ltr'
     }
 };
 var Home = React.createClass ({
@@ -87,7 +90,7 @@ var Home = React.createClass ({
         return (    
             <Row>
                 <Col sm={12}>
-                    <Tabs isRtl={false} style={{direction: 'ltr'}}>
+                    <Tabs style={styles.tabs}>
                         <Tab label={this.state.content.map.title}>
                             <Col sm={12}>
                                 <Paper>

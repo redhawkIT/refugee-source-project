@@ -47,7 +47,7 @@ const styles = {
         top: 0
     },
     header: {
-        //For bi/RTL support
+        //For bidi/rtl support
         paddingRight: 10,
         paddingLeft: 10
     },
@@ -64,7 +64,7 @@ const styles = {
         bottom: 65,
         textAlign: "center"
     }
-};
+};   //Right-to-Left
 
 var App = React.createClass ({
     mixins: [ReactFireMixin],
@@ -117,6 +117,19 @@ var App = React.createClass ({
         as clones with additional props. This allows us to pass data down routes.
         Think this is weird? It's actually from the React docs...
         */
+        console.log (document.documentElement.dir);
+        var containerStyle = {};
+        if (this.state.lang == 'ar') {
+            containerStyle = {
+                paddingTop: 100,
+                paddingRight: this.state.nav ? styles.drawer.width : 20
+            };
+        } else {
+            containerStyle = {
+                paddingTop: 100,
+                paddingLeft: this.state.nav ? styles.drawer.width : 20
+            };
+        }
         return (
             <div>
                 {!this.state.lang ?
@@ -136,6 +149,7 @@ var App = React.createClass ({
                         open={this.state.nav}
                         docked={true}
                         containerStyle={styles.drawer}
+                        openSecondary={this.state.lang == 'ar'}
                         zDepth={1}
                         >
 
@@ -150,10 +164,7 @@ var App = React.createClass ({
                         </Paper>
                     </Drawer>
 
-                    <Container style={{
-                        paddingTop: 100,
-                        paddingLeft: this.state.nav ? styles.drawer.width : 20
-                    }}>
+                    <Container style={containerStyle}>
                         {
                         React.cloneElement(
                             this.props.children, {
