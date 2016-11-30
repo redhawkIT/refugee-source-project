@@ -68,7 +68,8 @@ var App = React.createClass ({
         return {
             mobile: mobileView,
             nav: !mobileView,
-            lang: '',
+            lang: 'en',
+            firstLoad: true,
             content: {
                 header: 'Emerald Refuge',
                 home: 'Home',
@@ -80,15 +81,28 @@ var App = React.createClass ({
         };
     },
     componentWillMount: function() {
-        var ref = firebase.database().ref('main/' + this.props.lang + "/app");
-        this.bindAsObject(ref, 'content');
-        console.log("BOUND:", this.state.content);
+//        var path = "main/" + this.state.lang;
+//        var ref = firebase.database().ref(path);
+//        console.log("PATH:", path);
+//        console.log("REF:", ref);
+//        this.bindAsObject(ref, 'content');
+//        console.log("BOUND:", this.state.content);
     },
     
     setLang:function(language) {
         this.setState({
-            lang: language
+            lang: language,
+            firstLoad: false
         });
+        this.loadContent();
+        
+    },
+    loadContent:function() {
+        var path = 'main/' + this.state.lang + '/app';
+        var ref = firebase.database().ref(path);
+//        console.log("PATH:", path);
+//        console.log("REF:", ref);
+        this.bindAsObject(ref, 'content');
     },
     
     /*
@@ -128,7 +142,7 @@ var App = React.createClass ({
                     style={styles.appBar}
                     zDepth={2}
                     />
-                {!this.state.lang ?
+                {this.state.firstLoad ?
                     <Container>
                         <Gateway setLang={this.setLang}/>
                     </Container>
