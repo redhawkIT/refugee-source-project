@@ -70,12 +70,12 @@ var App = React.createClass ({
             nav: !mobileView,
             lang: '',
             content: {
-                header: 'Emerald Refuge',
-                home: 'Home',
-                about: 'About Us',
-                disclaimer: 'Loading...',
-                tabMap: 'Map',
-                tabDirectory: 'Directory'
+                header: '...',
+                home: '...',
+                about: '...',
+                disclaimer: '...',
+                tabMap: '...',
+                tabDirectory: '...'
             }
         };
     },
@@ -163,7 +163,10 @@ var App = React.createClass ({
                         paddingLeft: this.state.nav ? styles.drawer.width : 20
                     }}>
                         {React.cloneElement(
-                            this.props.children, { lang: this.state.lang }
+                            this.props.children, {
+                                lang: this.state.lang,
+                                content: this.state.content
+                            }
                         )}
                     </Container>
 

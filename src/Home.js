@@ -70,7 +70,8 @@ var Home = React.createClass ({
     },
     
     render:function() {
-        console.log('HOME (REFUGEE) INFO:', this.state.filters);
+        console.log('HOME (REFUGEE) PROPS:', this.props);
+        console.log('HOME (REFUGEE) INFO:', this.state);
         return (    
             <Row>
                 <Col sm={12}>
@@ -78,8 +79,8 @@ var Home = React.createClass ({
                     onChange={this.handleSlide}
                     value={this.state.slideIndex}
                 >
-                    <Tab label="Map" value={0} />
-                    <Tab label="Directory" value={1} />
+                    <Tab label={this.props.content.tabMap} value={0} />
+                    <Tab label={this.props.content.tabDirectory} value={1} />
                 </Tabs>
                 <SwipeableViews
                     index={this.state.slideIndex}
