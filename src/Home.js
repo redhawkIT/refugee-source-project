@@ -14,6 +14,7 @@ document:false, window:false, console:false, alert:false, user:false
 import React from 'react';
 import {Row, Col} from 'react-grid-system';
 
+
 import firebase from 'firebase';
 import ReactFireMixin from 'reactfire';
 
@@ -86,35 +87,28 @@ var Home = React.createClass ({
         return (    
             <Row>
                 <Col sm={12}>
-                <Tabs
-                    onChange={this.handleSlide}
-                    value={this.state.slideIndex}
-                >
-                    <Tab label={this.state.content.map.title} value={0} />
-                    <Tab label={this.state.content.directory.title} value={1} />
-                </Tabs>
-                <SwipeableViews
-                    index={this.state.slideIndex}
-                    onChangeIndex={this.handleSlide}
-                    style={styles.views}
-                >
-                    <Col sm={12}>
-                        <Paper>
-                            <ServiceMap 
-                                lang={this.props.lang}
-                                content={this.state.content.map}
-                                filters={this.state.filters}  />
-                        </Paper>
-                    </Col>
-                    <Col sm={12}>
-                        <Paper>
-                            <Directory 
-                                lang={this.props.lang}
-                                content={this.state.content.directory}
-                                filters={this.state.filters}  />
-                        </Paper>
-                    </Col>
-                </SwipeableViews>   
+                    <Tabs isRtl={false} style={{direction: 'ltr'}}>
+                        <Tab label={this.state.content.map.title}>
+                            <Col sm={12}>
+                                <Paper>
+                                    <ServiceMap 
+                                        lang={this.props.lang}
+                                        content={this.state.content.map}
+                                        filters={this.state.filters}  />
+                                </Paper>
+                            </Col>
+                        </Tab>
+                        <Tab label={this.state.content.directory.title}>
+                            <Col sm={12}>
+                                <Paper>
+                                    <Directory 
+                                        lang={this.props.lang}
+                                        content={this.state.content.directory}
+                                        filters={this.state.filters}  />
+                                </Paper>
+                            </Col>
+                        </Tab>
+                    </Tabs>
                 </Col>
             </Row>            
         );
