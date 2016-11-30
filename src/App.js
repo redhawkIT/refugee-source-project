@@ -90,19 +90,15 @@ var App = React.createClass ({
     },
     
     setLang:function(language) {
+        var path = 'main/' + language + '/app';
+        var ref = firebase.database().ref(path);
+        //        console.log("PATH:", path);
+        //        console.log("REF:", ref);
+        this.bindAsObject(ref, 'content');
         this.setState({
             lang: language,
             firstLoad: false
         });
-        this.loadContent();
-        
-    },
-    loadContent:function() {
-        var path = 'main/' + this.state.lang + '/app';
-        var ref = firebase.database().ref(path);
-//        console.log("PATH:", path);
-//        console.log("REF:", ref);
-        this.bindAsObject(ref, 'content');
     },
     
     /*
@@ -136,44 +132,45 @@ var App = React.createClass ({
         console.log("CONTENT:", this.state.content);
         return (
             <div>
-                <AppBar
-                    title={"Emerald Refuge"}
-                    onTouchTap={this.navToggle}
-                    style={styles.appBar}
-                    zDepth={2}
-                    />
                 {this.state.firstLoad ?
                     <Container>
                         <Gateway setLang={this.setLang}/>
                     </Container>
-                    :
-                    <div>
-                        <Drawer
-                            open={this.state.nav}
-                            docked={true}
-                            containerStyle={styles.drawer}
-                            zDepth={1}
-                            >
-                            
-                            <Nav />
-                            
-                            <Paper zDepth={5} style={styles.footer}>
-                                <em>
-                                    Disclaimer: This is a student project, not a fully secured website
-                                </em>
-                            </Paper>
-                        </Drawer>
+                :
+                <div>
+                    <AppBar
+                        title={this.state.content.header}
+                        onTouchTap={this.navToggle}
+                        style={styles.appBar}
+                        zDepth={2}
+                        />
+                
+                    <Drawer
+                        open={this.state.nav}
+                        docked={true}
+                        containerStyle={styles.drawer}
+                        zDepth={1}
+                        >
 
-                        <Container style={{
-                            paddingTop: 100,
-                            paddingLeft: this.state.nav ? styles.drawer.width : 20
-                        }}>
-                            {React.cloneElement(
-                                this.props.children, { lang: this.state.lang }
-                            )}
-                        </Container>
-                        
-                    </div>
+                        <Nav content={this.state.content}/>
+
+                        <Paper zDepth={5} style={styles.footer}>
+                            <em>
+                                Disclaimer: This is a student project, not a fully secured website
+                            </em>
+                        </Paper>
+                    </Drawer>
+
+                    <Container style={{
+                        paddingTop: 100,
+                        paddingLeft: this.state.nav ? styles.drawer.width : 20
+                    }}>
+                        {React.cloneElement(
+                            this.props.children, { lang: this.state.lang }
+                        )}
+                    </Container>
+
+                </div>
                 }
             </div>
         );

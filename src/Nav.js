@@ -42,7 +42,7 @@ var Nav = React.createClass ({
         return (
             <List style={styles.list}>
                 <Link to="/">
-                    <ListItem primaryText="Home"
+                    <ListItem primaryText={this.props.content.home}
                         leftIcon={<StoreMallDirectory color={iconColor}/>}/>
                 </Link>
                 <Link to="/about">
