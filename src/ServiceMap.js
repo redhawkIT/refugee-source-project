@@ -29,7 +29,7 @@ const styles = {
     card: {
         marginBottom: 10,
         marginTop: 10,
-        textAlign: 'center'
+        direction: 'inherit'
     }
 };
 var ServiceMap = React.createClass ({

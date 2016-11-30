@@ -37,9 +37,6 @@ import Directory from './Directory';
 const styles = {
     views: {
         padding: 10
-    },
-    tabs: {
-        direction: 'ltr'
     }
 };
 var Home = React.createClass ({
@@ -87,15 +84,20 @@ var Home = React.createClass ({
     },
     
     render:function() {
+        //Tabs are overriden inline, Material-UI is not RTL compatible.
+        var adaptiveDirection = {
+            direction: (this.props.isRTL ? 'rtl' : 'inherit')
+        };
         return (    
             <Row>
                 <Col sm={12}>
-                    <Tabs style={styles.tabs}>
+                    <Tabs style={{direction: 'ltr'}} isRtl={false}>
                         <Tab label={this.state.content.map.title}>
                             <Col sm={12}>
-                                <Paper>
+                                <Paper style={adaptiveDirection}>
                                     <ServiceMap 
                                         lang={this.props.lang}
+                                        isRTL={this.props.isRTL}
                                         content={this.state.content.map}
                                         filters={this.state.filters}  />
                                 </Paper>
@@ -103,9 +105,10 @@ var Home = React.createClass ({
                         </Tab>
                         <Tab label={this.state.content.directory.title}>
                             <Col sm={12}>
-                                <Paper>
+                                <Paper style={adaptiveDirection}>
                                     <Directory 
                                         lang={this.props.lang}
+                                        isRTL={this.props.isRTL}
                                         content={this.state.content.directory}
                                         filters={this.state.filters}  />
                                 </Paper>
