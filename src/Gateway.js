@@ -45,7 +45,7 @@ var Gateway = React.createClass ({
                     <RaisedButton secondary={true} label="العربية"
                         onTouchTap={function() {
                             this.props.setLang('ar');
-                            document.documentElement.dir = 'rtl';
+                            this.props.setRTL();
                         }.bind(this)}/>
                     <RaisedButton secondary={true} label="Language-C" disabled={true}
                         onTouchTap={() => this.props.setLang('cc')} />

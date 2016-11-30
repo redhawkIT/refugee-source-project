@@ -92,6 +92,12 @@ var App = React.createClass ({
             isRTL: (language == 'ar')
         });
     },
+    setRTL:function() {
+        document.documentElement.dir = 'rtl';
+        this.setState({
+            isRTL: true
+        });
+    },
     
     /*
     Material-UI Drawers are consistent w/ guidelines, but do not operate like
@@ -130,7 +136,9 @@ var App = React.createClass ({
             <div>
                 {!this.state.lang ?
                     <Container>
-                        <Gateway setLang={this.setLang}/>
+                        <Gateway
+                            setLang={this.setLang}
+                            setRTL={this.setRTL}/>
                     </Container>
                 :
                 <div>
