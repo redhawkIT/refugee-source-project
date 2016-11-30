@@ -12,7 +12,9 @@
       "home" : {
         "directory" : {
           "description" : "وفيما يلي قائمة من مراكز الموارد إعادة التوطين في ولاية واشنطن.",
-          "title" : "دليل"
+          "phone" : "هاتف",
+          "title" : "دليل",
+          "website" : "موقع الكتروني"
         },
         "map" : {
           "description" : "هذا هو نائب لخرائط خدمتنا. ملاحظة، ويسمى هذا العنصر \"ServiceMap\" - وهذا هو لمنع الصراعات مساحة الاسم مع خريطة الإضافات مثل كتيب وخرائط Google.",
@@ -32,7 +34,9 @@
       "home" : {
         "directory" : {
           "description" : "Below is a list of resettlement resource centers in Washington State.",
-          "title" : "Directory"
+          "phone" : "Phone",
+          "title" : "Directory",
+          "website" : "Website"
         },
         "map" : {
           "description" : "This is a placeholder for our service maps. Note, this component is called \"ServiceMap\" - this is to prevent namespace conflicts with map plugins like Leaflet and Google Maps.",
@@ -43,7 +47,16 @@
   },
   "resources" : {
     "ar" : {
-      "foo" : "bar"
+      "الكاثوليكية الخدمات المجتمعية واشنطن الغربية" : {
+        "address" : "1610 South King Street, Seattle, WA 98144",
+        "description" : "الخدمات الكاثوليكية المتاحة في مقاطعة كينغ",
+        "hours" : "من الاثنين إلى الجمعة 10:00 حتي 04:00",
+        "link" : "http://www.dioceserroseattle.org/",
+        "name" : "الكاثوليكية الخدمات المجتمعية واشنطن الغربية",
+        "phone" : 2063233152,
+        "primary" : "Resettlement",
+        "services" : "إعادة التوطين، التعليم"
+      }
     },
     "en" : {
       "Catholic Community Services of Western Washington" : {
