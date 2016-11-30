@@ -42,7 +42,7 @@ var Gateway = React.createClass ({
                 <CardActions>
                     <RaisedButton secondary={true} label="English"
                         onTouchTap={() => this.props.setLang('en')} />
-                    <RaisedButton secondary={true} label="عَرَبِيّ"
+                    <RaisedButton secondary={true} label="العربية"
                         onTouchTap={() => this.props.setLang('ar')} />
                     <RaisedButton secondary={true} label="Language-C" disabled={true}
                         onTouchTap={() => this.props.setLang('cc')} />

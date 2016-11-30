@@ -30,7 +30,6 @@ const styles = {
     }
 };
 var Listing = React.createClass ({    
-    
     render:function() {
         return (
             <Card style={styles.card}>
