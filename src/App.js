@@ -94,7 +94,7 @@ var App = React.createClass ({
     navToggle:function() {
         this.setState({nav: !this.state.nav});
     },
-    componentDidMount:function() {
+    componentWillMount:function() {
         window.addEventListener('resize', this.resize);
     },
     resize:function() {

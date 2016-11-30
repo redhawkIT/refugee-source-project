@@ -37,12 +37,10 @@ var ServiceMap = React.createClass ({
         return (
             <div>
                 <Card style={styles.card}>
-                    <CardTitle title="Home - Map"/>
+                    <CardTitle title={this.props.content.title}/>
                     <CardText>
-                        Language: {this.props.lang}
                         <p>
-                            This is the ServiceMap component.
-                            It's not called "Map" due to a namespace conflict.
+                            {this.props.content.description}
                         </p>
                     </CardText>
                 </Card>

@@ -32,6 +32,9 @@ import StoreMallDirectory from 'material-ui/svg-icons/maps/store-mall-directory'
 const styles = {
     list: {
         overflowY: 'auto'
+    },
+    link: {
+        textDecoration: 'none'
     }
 };
 
@@ -41,11 +44,11 @@ var Nav = React.createClass ({
     render:function() {
         return (
             <List style={styles.list}>
-                <Link to="/">
+                <Link to="/" style={styles.link}>
                     <ListItem primaryText={this.props.content.home}
                         leftIcon={<StoreMallDirectory color={iconColor}/>}/>
                 </Link>
-                <Link to="/about">
+                <Link to="/about" style={styles.link}>
                     <ListItem primaryText={this.props.content.about}
                         leftIcon={<QuestionAnswer color={iconColor}/>} />
                 </Link>

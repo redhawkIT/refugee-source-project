@@ -40,7 +40,7 @@ var Directory = React.createClass ({
         return (
             <div>
                 <p>
-                    This is the Directory component. Language: {this.props.lang}.
+                    {this.props.content.description}
                 </p>
                 {listings.map((listing, i) =>
                     <Listing key={i} listing={listing} />
