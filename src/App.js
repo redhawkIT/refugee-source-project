@@ -68,8 +68,7 @@ var App = React.createClass ({
         return {
             mobile: mobileView,
             nav: !mobileView,
-            lang: 'en',
-            firstLoad: true,
+            lang: '',
             content: {
                 header: 'Emerald Refuge',
                 home: 'Home',
@@ -80,24 +79,22 @@ var App = React.createClass ({
             }
         };
     },
-    componentWillMount: function() {
+//    componentWillMount: function() {
 //        var path = "main/" + this.state.lang;
 //        var ref = firebase.database().ref(path);
 //        console.log("PATH:", path);
 //        console.log("REF:", ref);
 //        this.bindAsObject(ref, 'content');
 //        console.log("BOUND:", this.state.content);
-    },
+//    },
     
     setLang:function(language) {
         var path = 'main/' + language + '/app';
         var ref = firebase.database().ref(path);
-        //        console.log("PATH:", path);
-        //        console.log("REF:", ref);
         this.bindAsObject(ref, 'content');
         this.setState({
-            lang: language,
-            firstLoad: false
+            lang: language
+//            firstLoad: false
         });
     },
     
@@ -132,7 +129,7 @@ var App = React.createClass ({
         console.log("CONTENT:", this.state.content);
         return (
             <div>
-                {this.state.firstLoad ?
+                {!this.state.lang ?
                     <Container>
                         <Gateway setLang={this.setLang}/>
                     </Container>
@@ -156,7 +153,7 @@ var App = React.createClass ({
 
                         <Paper zDepth={5} style={styles.footer}>
                             <em>
-                                Disclaimer: This is a student project, not a fully secured website
+                                {this.state.content.disclaimer}
                             </em>
                         </Paper>
                     </Drawer>

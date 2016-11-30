@@ -1,0 +1,41 @@
+{
+  "main" : {
+      "ar" : {
+          "app" : {
+      "about" : "معلومات عنا",
+      "disclaimer" : "تنويه: هذا هو مشروع الطالب، وليس موقع على شبكة الانترنت المضمون بالكامل",
+      "header" : "الزمرد ملجأ",
+      "home" : "الصفحة الرئيسية",
+      "tabDirectory" : "دليل",
+      "tabMap" : "رسم خريطة"
+          }
+          },
+    "en" : {
+      "app" : {
+        "about" : "About Us",
+        "disclaimer" : "Disclaimer: This is a student project, not a fully secured website",
+        "header" : "Emerald Refuge",
+        "home" : "Home",
+        "tabDirectory" : "Directory",
+        "tabMap" : "Map"
+      }
+    }
+  },
+  "resources" : {
+    "ar" : {
+      "foo" : "bar"
+    },
+    "en" : {
+      "Catholic Community Services of Western Washington" : {
+        "address" : "1610 South King Street, Seattle, WA 98144",
+        "description" : "Catholic services available in King County",
+        "hours" : "M-F 10am-4pm",
+        "link" : "http://www.dioceserroseattle.org/",
+        "name" : "Catholic Community Services of Western Washington",
+        "phone" : 2063233152,
+        "primary" : "Resettlement",
+        "services" : "Resettlement, Education"
+      }
+    }
+  }
+}
