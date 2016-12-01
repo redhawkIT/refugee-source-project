@@ -94,6 +94,7 @@ var App = React.createClass ({
         this.bindAsObject(ref, 'content');
     },
     setRTL:function() {
+        document.documentElement.dir = 'rtl';   //IE9 compatibility.
         this.setState({
             isRTL: true
         });
