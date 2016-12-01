@@ -64,7 +64,7 @@ const styles = {
         bottom: 65,
         textAlign: "center"
     }
-};   //Right-to-Left
+};
 
 var App = React.createClass ({
     mixins: [ReactFireMixin],
@@ -84,16 +84,16 @@ var App = React.createClass ({
     },
     
     setLang:function(language) {
-        var path = 'main/' + language + '/app';
-        var ref = firebase.database().ref(path);
-        this.bindAsObject(ref, 'content');
         this.setState({
             lang: language,
             isRTL: (language == 'ar')
         });
+        //Bind App Menu Text
+        var path = 'main/' + language + '/app';
+        var ref = firebase.database().ref(path);
+        this.bindAsObject(ref, 'content');
     },
     setRTL:function() {
-        document.documentElement.dir = 'rtl';
         this.setState({
             isRTL: true
         });
@@ -125,7 +125,6 @@ var App = React.createClass ({
         as clones with additional props. This allows us to pass data down routes.
         Think this is weird? It's actually from the React docs...
         */
-        console.log (document.documentElement.dir);
         var containerStyle = {paddingTop: 100};
         if (this.state.isRTL) {
             containerStyle.paddingRight = this.state.nav ? styles.drawer.width : 20;
@@ -170,14 +169,13 @@ var App = React.createClass ({
 
                     <Container style={containerStyle}>
                         {
-                        React.cloneElement(
-                            this.props.children, {
-                                lang: this.state.lang,
-                                isRTL: this.state.isRTL,
-                                content: this.state.content
-                            })
+                            React.cloneElement(
+                                this.props.children, {
+                                    lang: this.state.lang,
+                                    isRTL: this.state.isRTL,
+                                    content: this.state.content
+                                })
                         }
-                        
                     </Container>
 
                 </div>

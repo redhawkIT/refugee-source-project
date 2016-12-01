@@ -18,6 +18,7 @@ import React from 'react';
 //    /////
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
+import Divider from 'material-ui/Divider';
 
 
 //    /////
@@ -28,20 +29,23 @@ const styles = {
     card: {
         margin: 10
     },
-    languageAdaptive: {
-        direction: 'inherit'
-    }
 };
 var Listing = React.createClass ({
+    
     render:function() {
+        var adaptiveDirection = {
+            direction: (this.props.isRTL ? 'rtl' : 'inherit')
+        };
         return (
-            <Card style={styles.languageAdaptive}>
+            <Card style={adaptiveDirection}>
                 <CardHeader
                     title={this.props.listing.name}
-                    subtitle={this.props.listing.address}
-                    actAsExpander={true}
+                    subtitle={
+                        <span style={{direction: 'ltr'}}> {this.props.listing.address}
+                        </span>
+                    }
                     showExpandableButton={true}
-                    />
+                />
                 <CardActions>
                     {this.props.listing.link &&
                         <FlatButton secondary={true} label={this.props.websiteTitle}
@@ -53,9 +57,10 @@ var Listing = React.createClass ({
                     }
                 </CardActions>
                 <CardText expandable={true}>
-                    <em>
+                    <Divider />
+                    <p><em>
                         {this.props.listing.description}
-                    </em>
+                    </em></p>
                 </CardText>
             </Card>
         );
